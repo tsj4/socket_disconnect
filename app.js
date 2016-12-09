@@ -11,7 +11,7 @@ io.on('connection', function(socket) {
     var id = socket.id;
     console.log("handshake : "+socket.hasOwnProperty("handshake"));
     console.log("headers : "+socket.handshake.hasOwnProperty("headers"));
-    console.log('a user connected, socket id : '+id, socket);
+    console.log('a user connected, socket id : '+id, socket.handshake.headers);
 
     setTimeout(function () {
         socket.disconnect(true);     
