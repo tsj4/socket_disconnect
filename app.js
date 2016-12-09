@@ -8,21 +8,16 @@ app.get('/', function(req, res) {
 });
 
 io.on('connection', function(socket) {
-    console.log('a user connected, socket id : '+socket.id);
-
-    socket.on("foo", function (data) {
-        console.log("message : ", data);
-    });
+    var id = socket.id;
+    console.log('a user connected, socket id : '+id);
 
     setTimeout(function () {
         socket.disconnect(true);     
     }, 30000);
 
-    socket.on("disconnect", function(socket) {
-        console.log("a user disconnected, socket id : "+socket.id); 
+    socket.on("disconnect", function() {
+        console.log("a user disconnected, socket id : "+id); 
     });
-
-    
 });
 
 http.listen(port, function() {
