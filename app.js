@@ -9,9 +9,15 @@ app.get('/', function(req, res) {
 
 io.on('connection', function(socket) {
     var id = socket.id;
-    console.log("handshake : "+socket.hasOwnProperty("handshake"));
-    console.log("headers : "+socket.handshake.hasOwnProperty("headers"));
-    console.log('a user connected, socket id : '+id, socket.handshake.headers);
+    var ua = undefined;
+
+    if (socket.hasOwnProperty("handshake") && 
+        socket.handshake.hasOwnProperty("headers") && 
+        socket.handshake.headers.hasOwnProperty("user-agent")) {
+            ua = socket.handshake.headers["user-agent"];
+    }
+
+    console.log('a user connected, socket id : '+id+", ua : "+ua);
 
     setTimeout(function () {
         socket.disconnect(true);     
