@@ -11,7 +11,7 @@ io.on('connection', function(socket) {
     var id = socket.id;
 //var au = socket.request["user-agent"];
 //console.log('a user connected, socket id : '+id+", ua : "+ua);
-    console.log('a user connected, socket id : '+id, request);
+    console.log('a user connected, socket id : '+id, socket);
 
     setTimeout(function () {
         socket.disconnect(true);     
