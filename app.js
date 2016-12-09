@@ -8,7 +8,7 @@ app.get('/', function(req, res) {
 });
 
 io.on('connection', function(socket) {
-    console.log('a user connected');
+    console.log('a user connected, socket id : 'socket.id);
 
     socket.on("foo", function (data) {
         console.log("message : ", data);
@@ -18,8 +18,8 @@ io.on('connection', function(socket) {
         socket.disconnect(true);     
     }, 30000);
 
-    socket.on("disconnect", function() {
-        console.log("a user disconnected"); 
+    socket.on("disconnect", function(socket) {
+        console.log("a user disconnected, socket id : "+socket.id); 
     });
 
     
